@@ -1,0 +1,52 @@
+/* the first thing we need to do is center the grid section inside the middle of our screen so the game board is going to be at the center of our screen*/
+
+body{
+    height:100vh;
+    width: 100vw;
+    /* By using display flex in parent elements, child elements automatically align like columns or rows with auto width and auto height. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: black;
+}
+
+#game-board {
+    background-color: #CCC;
+    width: 100vmin;
+    /* this takes whichever direction that is going to be the narrowest */
+    /* if we expand our screen vmin becomes our height because our height is the shortest width so now our with is going to be 100% of the height and our height is going to be 100% of our height*/
+    /* the reason we are doing this with vmin is so that way always we are going to have a square shape that is going to be as large as possible to fill our entire screen*/
+
+    height: 100vmin;
+
+    /* now we set up our grid */
+    display: grid;
+    /* we are going to change it so that we have 21 columns and 21 rows that are all the exact same size*/
+    /* and we want the browser to automatically calculate which size this is ,we don't want it to be 50 or 40 px , we want it to be 21 even squares*/
+    /* in that way no matter what size our browser is...the snake game is always going to have the same 21 squares*/
+
+    grid-template-rows: repeat(21, 1fr);
+    grid-template-columns: repeat(21, 1fr);
+
+    /* this will create 21 rows and columns of even width and height */
+}
+
+/* now what we need to style is our game piece and our food piece */
+
+.snake {
+    background-color: hsl(200, 100%, 50%);
+
+    /* now we create a border that is going to scale with our grid */
+    /* if we increase screen size our border increases and if we reduce it does the same */
+    /* to do that what we need to do is set it based on our vmin */
+    /* we also do the same for .food */
+    border: .25vmin solid black;
+
+}
+
+.food {
+    background-color: hsl(50, 100%, 50%);
+    border: .25vmin solid black;
+
+}
